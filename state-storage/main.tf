@@ -12,7 +12,7 @@ provider "azurerm" {
 # CREATE RESOURCE GROUP
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 resource "azurerm_resource_group" "rg" {
-  name     = "[CONFIGURE THIS VARIABLE]-terraform-resources"
+  name     = "terraform-resources"
   location = "eastus"
 }
 

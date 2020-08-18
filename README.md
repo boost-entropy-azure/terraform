@@ -46,7 +46,21 @@ IMPORTANT NOTE: This requires Application Administration priviliges, if you don'
 az ad sp create-for-rbac --name <service-principal-name>
 ```
 
-Once created, copy Service Principal client_id and client_secret and paste in the corresponding variables in terraform.tfvars and /state-storage/terraform.tfvars. 
+Once created, you will get an output json like this:
+
+```
+{
+  "appId": "<service-principal-ID>",
+  "displayName": "<service-principal-name>",
+  "name": "http://<service-principal-name>",
+  "password": "<service-principal-secred>",
+  "tenant": "<tenant-id>"
+}
+```
+
+copy Service Principal app_id into client_id, password into client_secret, tenant and the azure subscription ID in the corresponding variables.
+
+IMPORTANT: Do this in 2 places, terraform.tfvars and /state-storage/terraform.tfvars. 
 
 ```
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -58,7 +72,7 @@ client_id                     = "[CONFIGURE THIS VARIABLE]"
 client_secret                 = "[CONFIGURE THIS VARIABLE]"
 ```
 
-Also fill Subscription_id and tenant, of your Azure subscription.
+Make sure to also fill Subscription_id and tenant, of your Azure subscription.
 
 SubscriptionId is here:
 <img src="https://docs.bitnami.com/images/img/platforms/azure/subscription-id-1.png">
@@ -97,7 +111,7 @@ Plan execution for creation of the storage account
 terraform plan
 ```
 
-Output should show 1 resource to create, 0 to edit, 0 to destroy
+Output should show 3 resources to create, 0 to change, 0 to destroy
 
 Apply the plan
 
@@ -105,7 +119,20 @@ Apply the plan
 terraform apply
 ```
 
-The script will output the SAS token for accessing this storage account, copy and paste in the sas_token variable of the /backend.tf file.
+The script will print the following output which includes the SAS token for accessing this storage account. 
+
+```
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+resource_group_name = terraform-resources
+sas_token = <your-SAS-TOKEN>
+storage_name = terraformstorage
+```
+
+
+Copy and paste in the sas_token variable of the /backend.tf file.
 
 ```
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -120,6 +147,9 @@ terraform {
   }
 }
 ```
+
+IMPORTANT: Also verify the variables storage_account_name, 
+    container_name and key have the correct values for the storage you just created.
 
 ### Initialize backend
 
