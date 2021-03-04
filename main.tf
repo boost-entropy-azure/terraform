@@ -68,7 +68,7 @@ resource "azurerm_storage_account" "sa" {
 # CREATE SQL DATABASE
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 module "main_sql_database" {
-  source = "./modules/common/database"
+  source = "./modules/databases/sql_server_database"
 
   location            = azurerm_resource_group.main_rg.location
   resource_group_name = azurerm_resource_group.main_rg.name

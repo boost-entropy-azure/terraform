@@ -1,3 +1,4 @@
 .terraform
 state-storage/terraform.tfstate
 state-storage/storage.tfplan
+.terraform.lock.hcl
