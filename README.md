@@ -174,3 +174,4 @@ Terraform is now fully configured with remote state storage and you can now make
 
 * **Victor Flores** - *Initial template*
 * **Fede Gepp** - *General Improvements, generic appsettings, add reddis, add storage.*
+* **Victor Flores** - *04/03/2021 - Add modules for: FunctionApp, CosmosDB SQL DB, CosmosDB Container, Azure Service Bus and Service Bus Topic.*
