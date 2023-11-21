@@ -59,10 +59,15 @@ Once created, you will get an output json like this:
 ```
 
 Now, we need to assign a role to this principal (so that it can create/manage resources in the Azure cloud). Follow the guide below to assign a role to the principal.
-* Recommended for simplicity, assign Contributor role over the whole subscription.
 
 ```
 https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-cli
+```
+
+* Recommended for simplicity, assign Contributor role over the whole subscription, using the follownig command:
+
+```
+az role assignment create --assignee <PrincipalId> --role "Contributor" --subscription <SubscriptionId>
 ```
 
 copy Service Principal app_id into client_id, password into client_secret, tenant and the azure subscription ID in the corresponding variables.
