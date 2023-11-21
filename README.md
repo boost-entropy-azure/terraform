@@ -58,6 +58,12 @@ Once created, you will get an output json like this:
 }
 ```
 
+Now, run the following command to assign Contributor role to this principal (so that it can create/manage resources in the Azure cloud)
+
+```
+
+```
+
 copy Service Principal app_id into client_id, password into client_secret, tenant and the azure subscription ID in the corresponding variables.
 
 IMPORTANT: Do this in 2 places, terraform.tfvars and /state-storage/terraform.tfvars. 
