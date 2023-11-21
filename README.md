@@ -67,7 +67,7 @@ https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignmen
 * Recommended for simplicity, assign Contributor role over the whole subscription, using the follownig command:
 
 ```
-az role assignment create --assignee <PrincipalId> --role "Contributor" --subscription <SubscriptionId>
+az role assignment create --assignee <PrincipalId> --role "Contributor" --scope "/subscriptions/<SubscriptionId>" 
 ```
 
 copy Service Principal app_id into client_id, password into client_secret, tenant and the azure subscription ID in the corresponding variables.
